@@ -16,14 +16,11 @@
  */
 import com.vaadin.spock.Smoke
 import com.vaadin.gradle.ClientDependenciesTest
-import com.vaadin.gradle.LegacyClientDependenciesTest
-import com.vaadin.gradle.LegacyClientProductionModeConfigTest
-import com.vaadin.gradle.LegacyClientProductionModeTest
+
 import com.vaadin.gradle.FunctionalTest
 import com.vaadin.gradle.MultimoduleFunctionalTest
 
 runner {
     include FunctionalTest, MultimoduleFunctionalTest
-    exclude LegacyClientDependenciesTest, LegacyClientProductionModeTest, LegacyClientProductionModeConfigTest,
-            ClientDependenciesTest, Smoke
+    exclude ClientDependenciesTest, Smoke
 }

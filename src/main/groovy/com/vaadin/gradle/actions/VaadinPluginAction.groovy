@@ -21,7 +21,7 @@ import com.vaadin.gradle.VaadinPlugin
 import com.vaadin.gradle.extensions.VaadinPluginExtension
 import com.vaadin.gradle.tasks.AssembleClientDependenciesTask
 import com.vaadin.gradle.tasks.ConvertGroovyTemplatesToHTML
-import com.vaadin.gradle.tasks.InstallBowerDependenciesTask
+
 import com.vaadin.gradle.tasks.InstallYarnDependenciesTask
 import com.vaadin.gradle.tasks.VersionCheckTask
 import com.vaadin.gradle.tasks.WrapCssTask
@@ -89,7 +89,6 @@ class VaadinPluginAction extends PluginAction {
         super.executeAfterAllEvaluations()
         WebJarHelper.findDependantJarTasks(project).each {
             project.tasks[InstallYarnDependenciesTask.NAME].dependsOn(it)
-            project.tasks[InstallBowerDependenciesTask.NAME].dependsOn(it)
         }
     }
 

@@ -119,6 +119,7 @@ class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
             compiledTemplate.exists()
     }
 
+    /*
     void 'include dependant Java projects in transpilation'() {
         setup:
             vaadinProjectBuildFile << 'vaadin.productionMode = true'
@@ -153,4 +154,6 @@ class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
             result.output.contains("Unpacking frontend component in project ':libraryProject'")
             unpackedBowerJson.exists()
     }
+
+     */
 }

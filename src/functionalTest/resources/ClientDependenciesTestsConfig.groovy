@@ -16,8 +16,7 @@
  */
 
 import com.vaadin.gradle.ClientDependenciesTest
-import com.vaadin.gradle.LegacyClientDependenciesTest
 
 runner {
-    include LegacyClientDependenciesTest, ClientDependenciesTest
+    include ClientDependenciesTest
 }

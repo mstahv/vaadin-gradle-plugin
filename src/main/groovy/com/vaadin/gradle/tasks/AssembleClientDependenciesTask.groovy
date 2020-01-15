@@ -66,7 +66,6 @@ class AssembleClientDependenciesTask extends DefaultTask {
      */
     AssembleClientDependenciesTask() {
         dependsOn(TranspileDependenciesTask.NAME,
-                InstallBowerDependenciesTask.NAME,
                 InstallYarnDependenciesTask.NAME,
                 WrapCssTask.NAME
         )

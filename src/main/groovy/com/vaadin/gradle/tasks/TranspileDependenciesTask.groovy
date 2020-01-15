@@ -255,7 +255,6 @@ class TranspileDependenciesTask extends DefaultTask {
     TranspileDependenciesTask() {
         dependsOn(
                 'classes',
-                InstallBowerDependenciesTask.NAME,
                 InstallYarnDependenciesTask.NAME,
                 WrapCssTask.NAME,
                 ConvertGroovyTemplatesToHTML.NAME

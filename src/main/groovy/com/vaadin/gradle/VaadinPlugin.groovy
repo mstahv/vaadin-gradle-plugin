@@ -35,7 +35,7 @@ import com.vaadin.gradle.tasks.CreateCompositeTask
 import com.vaadin.gradle.tasks.CreateProjectTask
 import com.vaadin.gradle.tasks.CreateWebComponentTask
 import com.vaadin.gradle.tasks.CreateWebTemplateTask
-import com.vaadin.gradle.tasks.InstallBowerDependenciesTask
+
 import com.vaadin.gradle.tasks.InstallYarnDependenciesTask
 import com.vaadin.gradle.tasks.TranspileDependenciesTask
 import com.vaadin.gradle.tasks.VersionCheckTask
@@ -100,7 +100,6 @@ class VaadinPlugin implements Plugin<Project> {
                 register(CreateProjectTask.NAME, CreateProjectTask)
                 register(CreateWebComponentTask.NAME, CreateWebComponentTask)
                 register(InstallYarnDependenciesTask.NAME, InstallYarnDependenciesTask)
-                register(InstallBowerDependenciesTask.NAME, InstallBowerDependenciesTask)
                 register(TranspileDependenciesTask.NAME, TranspileDependenciesTask)
                 register(AssembleClientDependenciesTask.NAME, AssembleClientDependenciesTask)
                 register(WrapCssTask.NAME, WrapCssTask)
