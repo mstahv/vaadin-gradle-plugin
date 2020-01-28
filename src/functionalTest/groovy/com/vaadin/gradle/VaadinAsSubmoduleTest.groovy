@@ -19,6 +19,8 @@ package com.vaadin.gradle
 import com.vaadin.gradle.tasks.WrapCssTask
 import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.TaskOutcome
+import spock.lang.Ignore
+
 import java.nio.file.Paths
 
 /**
@@ -29,6 +31,7 @@ import java.nio.file.Paths
  */
 class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
 
+    @Ignore
     void 'submodule project creates project files in correct place'() {
         when:
             BuildResult result = run('vaadinCreateProject')
@@ -37,6 +40,7 @@ class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
             result.task(':vaadinProject:vaadinCreateProject').outcome == TaskOutcome.SUCCESS
     }
 
+    @Ignore
     void 'submodule project creates component files in correct place'() {
         when:
             BuildResult result = run('vaadinCreateComponent')
@@ -45,6 +49,7 @@ class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
             result.task(':vaadinProject:vaadinCreateComponent').outcome == TaskOutcome.SUCCESS
     }
 
+    @Ignore
     void 'submodule project with single build file'() {
         setup:
             vaadinProjectBuildFile.delete()
@@ -79,6 +84,7 @@ class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
             result.task(':vaadinProject:vaadinCreateProject').outcome == TaskOutcome.SUCCESS
     }
 
+    @Ignore
     void 'css wrappers are copied into the correct folder in sub-module'() {
         setup:
             File genStyles = Paths.get(vaadinProject.canonicalPath,
@@ -92,6 +98,7 @@ class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
             wrappedCss.exists()
     }
 
+    /*
     void 'groovy templates are compiled into the correct folder in sub-module'() {
         setup:
             vaadinProjectBuildFile.text = """
@@ -118,6 +125,8 @@ class VaadinAsSubmoduleTest extends MultimoduleFunctionalTest {
             result.task(':vaadinProject:vaadinConvertGroovyTemplatesToHtml').outcome == TaskOutcome.SUCCESS
             compiledTemplate.exists()
     }
+
+     */
 
     /*
     void 'include dependant Java projects in transpilation'() {

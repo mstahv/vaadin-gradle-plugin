@@ -48,16 +48,9 @@ class NodeSetupTask extends DefaultTask {
 
     final static String NAME = 'nodeSetup'
 
-    private static final String IVY_ARTIFACT_PATTERN = 'v[revision]/[artifact](-v[revision]-[classifier]).[ext]'
-    private static final String IVY_XML_PATH = 'v[revision]/ivy.xml'
-
     private NodeExtension config
 
     protected Variant variant
-
-    private IvyArtifactRepository repo
-
-    private List<ArtifactRepository> allRepos
 
     NodeSetupTask() {
         this.group = 'Node'
@@ -93,7 +86,7 @@ class NodeSetupTask extends DefaultTask {
         deleteExistingNode()
         unpackNodeArchive()
         setExecutableFlag()
-        restoreRepositories()
+        // restoreRepositories()
     }
 
     private void configureIfNeeded() {
@@ -177,30 +170,17 @@ class NodeSetupTask extends DefaultTask {
     }
 
     private void addRepository() {
-        allRepos = []
-        allRepos.addAll( project.repositories )
-        project.repositories.clear()
-
         String distUrl = config.distBaseUrl
-        repo = project.repositories.ivy {
-            url distUrl
-            if (IvyArtifactRepository.metaClass.respondsTo(this, 'patternLayout', Closure)) {
-                //Gradle 5.3 ->
-                patternLayout {
-                    artifact NodeSetupTask.IVY_ARTIFACT_PATTERN
-                    ivy NodeSetupTask.IVY_XML_PATH
-                }
-            } else {
-                layout 'pattern', {
-                    artifact NodeSetupTask.IVY_ARTIFACT_PATTERN
-                    ivy NodeSetupTask.IVY_XML_PATH
-                }
+        project.repositories.ivy {
+            setUrl(distUrl)
+            patternLayout {
+                artifact("v[revision]/[artifact](-v[revision]-[classifier]).[ext]")
+                ivy("v[revision]/ivy.xml")
+            }
+            metadataSources {
+                artifact()
             }
         }
     }
 
-    private void restoreRepositories() {
-        project.repositories.clear()
-        project.repositories.addAll(allRepos )
-    }
 }
